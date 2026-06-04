@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "registry:build": "shadcn build",
+    "verify:tokens": "node scripts/verify-tokens.mjs",
     "preview": "npm --prefix examples/preview run dev",
     "preview:build": "npm --prefix examples/preview run build"
   },

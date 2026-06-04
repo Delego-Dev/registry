@@ -110,6 +110,19 @@ open source · publicly accessible · valid registry schema · **flat** (`/regis
 `content` property** (content lives in each item's own JSON, which `shadcn build`
 produces).
 
+## Token sync
+
+The design tokens have **one canonical source** — `colors_and_type.css` in the
+Delego design system. Everything downstream derives from it: the landing's
+`tokens.css` + `/design` copy (byte-identical), and this registry's
+`delego-theme` (the hex tokens converted to OKLCH, light + dark).
+
+`npm run verify:tokens` is a drift guard — it asserts every `delego-theme` OKLCH
+value still equals the OKLCH of its mapped canonical token, and that the copies
+are byte-identical. Run it (from the workspace, with the sibling design-system +
+landing folders present) before publishing a token change. It exits non-zero on
+any discrepancy.
+
 ## License
 
 Apache-2.0, matching the Delego project.
