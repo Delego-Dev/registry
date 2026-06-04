@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+/* The registry sources live outside this app's root, so Tailwind v4's automatic
+   content detection skips them. Scan them explicitly or component classes
+   (button/badge/receipt variants) never get generated. */
+@source "../../../registry/delego/ui/*.tsx";
+
+/* Map Delego/shadcn variables onto Tailwind v4 color + font utilities, so
+   bg-primary / border-border / text-muted-foreground / font-mono resolve. The
+   .dark class redefines the underlying vars, so wrapping a subtree in .dark
+   reskins it with no dark: utilities needed. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

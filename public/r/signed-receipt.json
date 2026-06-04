@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "signed-receipt",
+  "type": "registry:ui",
+  "title": "Signed Receipt",
+  "description": "The ownable audit visual — one hash-chained, Ed25519-signed ledger record, with the signal bar, seal, and mono kv grid.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@delego/delego-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/delego/ui/signed-receipt.tsx",
+      "content": "import * as React from \"react\"\nimport { BadgeCheck, ShieldCheck } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Signed receipt — the ownable audit visual: one hash-chained, Ed25519-signed\n// record from the ledger. The left signal bar + seal read \"verified\"; the kv grid\n// is mono, with fingerprint/hash fields tinted in the signal color. Outcome tints\n// to the decision palette.\ntype SignedReceiptProps = React.ComponentProps<\"div\"> & {\n  seq: string | number\n  outcome: \"allow\" | \"needs_approval\" | \"deny\"\n  fingerprint: string\n  intentHash: string\n  prevHash?: string\n  phase?: string\n  signatureOk?: boolean\n}\n\nconst OUTCOME_COLOR: Record<SignedReceiptProps[\"outcome\"], string> = {\n  allow: \"var(--delego-allow)\",\n  needs_approval: \"var(--delego-approval)\",\n  deny: \"var(--delego-deny)\",\n}\n\nfunction Row({ k, v, hash }: { k: string; v: React.ReactNode; hash?: boolean }) {\n  return (\n    <>\n      <span className=\"text-muted-foreground\">{k}</span>\n      <span className={cn(\"text-foreground/80\", hash && \"text-[var(--delego-hash)]\")}>\n        {v}\n      </span>\n    </>\n  )\n}\n\nfunction SignedReceipt({\n  seq,\n  outcome,\n  fingerprint,\n  intentHash,\n  prevHash,\n  phase = \"execution\",\n  signatureOk = true,\n  className,\n  ...props\n}: SignedReceiptProps) {\n  return (\n    <div\n      data-slot=\"signed-receipt\"\n      className={cn(\n        \"relative overflow-hidden rounded-[14px] border border-border bg-popover px-[18px] py-4\",\n        className\n      )}\n      {...props}\n    >\n      <span className=\"absolute inset-y-0 left-0 w-[3px] bg-[linear-gradient(var(--delego-signal),color-mix(in_oklch,var(--delego-signal)_55%,black))]\" />\n      <div className=\"mb-[13px] flex items-center gap-[9px]\">\n        <div className=\"grid size-[26px] place-items-center rounded-lg border border-[color-mix(in_oklch,var(--delego-allow)_34%,transparent)] bg-[color-mix(in_oklch,var(--delego-allow)_12%,transparent)] text-[var(--delego-allow)]\">\n          <BadgeCheck className=\"size-[15px]\" />\n        </div>\n        <div className=\"font-mono text-[13px] text-foreground\">\n          receipt · <span className=\"text-muted-foreground\">seq</span> {seq}\n        </div>\n        {signatureOk && (\n          <span className=\"ml-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-[var(--delego-allow)]\">\n            <ShieldCheck className=\"size-[13px]\" />\n            signature ok\n          </span>\n        )}\n      </div>\n      <div className=\"grid grid-cols-[96px_1fr] gap-x-3 gap-y-[5px] font-mono text-[11.5px]\">\n        <Row k=\"phase\" v={phase} />\n        <Row\n          k=\"outcome\"\n          v={<span style={{ color: OUTCOME_COLOR[outcome] }}>{outcome}</span>}\n        />\n        <Row k=\"fingerprint\" v={fingerprint} hash />\n        <Row k=\"intent_hash\" v={intentHash} />\n        {prevHash ? <Row k=\"prev_hash\" v={prevHash} /> : null}\n      </div>\n    </div>\n  )\n}\n\nexport { SignedReceipt, type SignedReceiptProps }\n",
+      "type": "registry:ui",
+      "target": "components/ui/signed-receipt.tsx"
+    }
+  ]
+}

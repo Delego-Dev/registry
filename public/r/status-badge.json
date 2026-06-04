@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-badge",
+  "type": "registry:ui",
+  "title": "Status Badge",
+  "description": "Mono pill with leading icon + status color. Variants: allow, approval, deny, indigo (principal/audit), neutral.",
+  "dependencies": [
+    "class-variance-authority",
+    "@radix-ui/react-slot"
+  ],
+  "registryDependencies": [
+    "@delego/delego-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/delego/ui/status-badge.tsx",
+      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Status badge — the design-system pill: mono label + leading icon + status color.\n// Variants mirror the protocol vocabulary (decision outcomes + principal/audit tags).\n// Soft fills are derived from the semantic var via color-mix so they track the theme.\nconst statusBadgeVariants = cva(\n  \"inline-flex items-center gap-1.5 rounded-full border py-[5px] pl-[9px] pr-[11px] font-mono text-xs font-medium [&_svg]:size-[13px] [&_svg]:shrink-0\",\n  {\n    variants: {\n      variant: {\n        allow:\n          \"text-[var(--delego-allow)] border-[color-mix(in_oklch,var(--delego-allow)_32%,transparent)] bg-[color-mix(in_oklch,var(--delego-allow)_10%,transparent)]\",\n        approval:\n          \"text-[var(--delego-approval)] border-[color-mix(in_oklch,var(--delego-approval)_32%,transparent)] bg-[color-mix(in_oklch,var(--delego-approval)_10%,transparent)]\",\n        deny: \"text-[var(--delego-deny)] border-[color-mix(in_oklch,var(--delego-deny)_32%,transparent)] bg-[color-mix(in_oklch,var(--delego-deny)_10%,transparent)]\",\n        indigo:\n          \"text-[var(--delego-indigo)] border-[color-mix(in_oklch,var(--delego-indigo)_34%,transparent)] bg-[color-mix(in_oklch,var(--delego-indigo)_12%,transparent)]\",\n        neutral: \"text-foreground/80 border-border bg-card\",\n      },\n    },\n    defaultVariants: {\n      variant: \"neutral\",\n    },\n  }\n)\n\nfunction StatusBadge({\n  className,\n  variant,\n  asChild = false,\n  ...props\n}: React.ComponentProps<\"span\"> &\n  VariantProps<typeof statusBadgeVariants> & {\n    asChild?: boolean\n  }) {\n  const Comp = asChild ? Slot : \"span\"\n  return (\n    <Comp\n      data-slot=\"status-badge\"\n      className={cn(statusBadgeVariants({ variant, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { StatusBadge, statusBadgeVariants }\n",
+      "type": "registry:ui",
+      "target": "components/ui/status-badge.tsx"
+    }
+  ]
+}

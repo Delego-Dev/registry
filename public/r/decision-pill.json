@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "decision-pill",
+  "type": "registry:ui",
+  "title": "Decision Pill",
+  "description": "The signature Delego element: renders a Decision outcome (allow / needs_approval / deny) with its canonical icon, mono label, and color.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@delego/status-badge"
+  ],
+  "files": [
+    {
+      "path": "registry/delego/ui/decision-pill.tsx",
+      "content": "import * as React from \"react\"\nimport { BadgeCheck, Clock, ShieldX } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { StatusBadge } from \"@/components/ui/status-badge\"\n\n// Decision pill — the signature Delego element. A delego Decision has exactly one\n// of three outcomes; this renders it with the canonical icon + mono label + color\n// so an outcome looks identical everywhere it appears. The default label is the\n// protocol's own token (e.g. `needs_approval`); pass children to override.\ntype Decision = \"allow\" | \"needs_approval\" | \"deny\"\n\nconst DECISION = {\n  allow: { variant: \"allow\", icon: BadgeCheck, label: \"allow\" },\n  needs_approval: { variant: \"approval\", icon: Clock, label: \"needs_approval\" },\n  deny: { variant: \"deny\", icon: ShieldX, label: \"deny\" },\n} as const\n\nfunction DecisionPill({\n  decision,\n  className,\n  children,\n  ...props\n}: Omit<React.ComponentProps<typeof StatusBadge>, \"variant\"> & {\n  decision: Decision\n}) {\n  const { variant, icon: Icon, label } = DECISION[decision]\n  return (\n    <StatusBadge\n      variant={variant}\n      data-decision={decision}\n      className={cn(className)}\n      {...props}\n    >\n      <Icon aria-hidden />\n      {children ?? label}\n    </StatusBadge>\n  )\n}\n\nexport { DecisionPill, type Decision }\n",
+      "type": "registry:ui",
+      "target": "components/ui/decision-pill.tsx"
+    }
+  ]
+}

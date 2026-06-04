@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.next/
+out/
+.playwright-mcp/
+.DS_Store
+*.log
+*.tsbuildinfo

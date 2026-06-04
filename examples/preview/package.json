@@ -1,0 +1,13 @@
+{
+  "name": "@delego/registry-preview",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "comment": "Deps are hoisted to the registry root package.json so the preview and the out-of-tree registry/ sources share one node_modules (single React copy). Install at the root, then run these scripts.",
+  "scripts": {
+    "gen:theme": "node scripts/gen-theme.mjs",
+    "dev": "npm run gen:theme && vite",
+    "build": "npm run gen:theme && tsc --noEmit && vite build",
+    "preview": "vite preview"
+  }
+}

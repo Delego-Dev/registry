@@ -1,0 +1,33 @@
+{
+  "name": "@delego/registry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Delego design-system registry for shadcn — theme + signature components for the access layer for the agent era.",
+  "homepage": "https://github.com/Delego-Dev/registry",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "registry:build": "shadcn build",
+    "preview": "npm --prefix examples/preview run dev",
+    "preview:build": "npm --prefix examples/preview run build"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "shadcn": "^2.4.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0"
+  }
+}

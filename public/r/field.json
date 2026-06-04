@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "type": "registry:ui",
+  "title": "Field",
+  "description": "Labeled input with optional leading icon and mono hint, lit by the indigo focus halo. Drop-in over a native input.",
+  "registryDependencies": [
+    "@delego/delego-theme"
+  ],
+  "files": [
+    {
+      "path": "registry/delego/ui/field.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Field — a labeled input with an optional leading icon and a mono hint, lit by the\n// indigo focus halo on focus-within. Ports the design-system form field; wraps a\n// native <input> so it stays a drop-in.\ntype FieldProps = React.ComponentProps<\"input\"> & {\n  label?: string\n  hint?: string\n  icon?: React.ReactNode\n  trailing?: React.ReactNode\n  containerClassName?: string\n}\n\nfunction Field({\n  label,\n  hint,\n  icon,\n  trailing,\n  className,\n  containerClassName,\n  id,\n  ...props\n}: FieldProps) {\n  const reactId = React.useId()\n  const inputId = id ?? reactId\n  return (\n    <div className={cn(\"flex flex-1 flex-col gap-[7px]\", containerClassName)}>\n      {label && (\n        <label htmlFor={inputId} className=\"text-[12.5px] font-medium text-foreground/80\">\n          {label}\n        </label>\n      )}\n      <div className=\"flex items-center gap-[9px] rounded-[--radius] border border-border bg-popover px-[13px] py-[11px] transition-all duration-200 focus-within:border-[var(--delego-indigo)] focus-within:ring-[3px] focus-within:ring-ring/45 [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-muted-foreground\">\n        {icon}\n        <input\n          id={inputId}\n          className={cn(\n            \"w-full bg-transparent font-sans text-sm text-foreground outline-none placeholder:text-muted-foreground/70\",\n            className\n          )}\n          {...props}\n        />\n        {trailing}\n      </div>\n      {hint && <span className=\"font-mono text-[10.5px] text-muted-foreground\">{hint}</span>}\n    </div>\n  )\n}\n\nexport { Field, type FieldProps }\n",
+      "type": "registry:ui",
+      "target": "components/ui/field.tsx"
+    }
+  ]
+}
