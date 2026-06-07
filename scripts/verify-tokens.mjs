@@ -20,7 +20,9 @@ const CANON = process.env.CANON || resolve(here, "../../Delego Design System/col
 const LANDING = process.env.LANDING || resolve(here, "../../landing");
 const REGISTRY = resolve(here, "../registry.json");
 
-// canonical token name (light, dark) → which shadcn var derives from it
+// canonical token name (light, dark) → which shadcn var derives from it.
+// The decision palette resolves per-mode to its legible text token: on light it
+// derives from the -700 (≥4.6:1 on --paper), on dark from the -400 / mint.
 const MAP = {
   background: ["paper", "ink-1000"], foreground: ["slate-700", "fg"],
   card: ["surface", "ink-850"], "card-foreground": ["slate-700", "fg"],
@@ -34,8 +36,10 @@ const MAP = {
   "chart-1": ["indigo-500", "indigo-400"], "chart-2": ["signal-700", "signal-400"],
   "chart-3": ["approval", "approval"], "chart-4": ["deny", "deny"], "chart-5": ["ink-400", "ink-400"],
   "delego-indigo": ["indigo-500", "indigo-500"], "delego-signal": ["signal-700", "signal-400"],
-  "delego-allow": ["signal-700", "signal-400"], "delego-approval": ["approval", "approval"],
-  "delego-deny": ["deny", "deny"], "delego-hash": ["signal-700", "signal-400"],
+  "delego-allow": ["allow-700", "signal-400"], "delego-approval": ["approval-700", "approval-400"],
+  "delego-deny": ["deny-700", "deny-400"], "delego-hash": ["signal-700", "signal-400"],
+  "delego-allow-fg": ["allow-700", "signal-400"], "delego-approval-fg": ["approval-700", "approval-400"],
+  "delego-deny-fg": ["deny-700", "deny-400"], "delego-indigo-fg": ["indigo-fg", "indigo-fg"],
   sidebar: ["surface", "ink-900"], "sidebar-foreground": ["slate-700", "fg"],
   "sidebar-primary": ["indigo-500", "indigo-400"], "sidebar-primary-foreground": ["surface", "surface"],
   "sidebar-accent": ["paper-2", "ink-800"], "sidebar-accent-foreground": ["slate-700", "fg"],
