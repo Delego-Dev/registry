@@ -1,0 +1,28 @@
+name: registry
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - name: Build the registry (shadcn build)
+        run: npm run registry:build
+      - name: public/r must be rebuilt and committed
+        run: |
+          if ! git diff --exit-code -- public/r; then
+            echo "::error::public/r is out of date — run 'npm run registry:build' and commit the result."
+            exit 1
+          fi
