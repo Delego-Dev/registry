@@ -1,7 +1,7 @@
 # @delego/registry
 
-A [shadcn](https://ui.shadcn.com) registry for the **Delego** design system — the
-access layer for the agent era. It ships the Delego token theme plus the
+A [shadcn](https://ui.shadcn.com) registry for the **Delego** design system —
+intent-bound action authorization for AI agents. It ships the Delego token theme plus the
 signature components that stock shadcn doesn't have (the protocol decision pill,
 the signed audit receipt), so any shadcn project can install Delego-branded UI
 with one command:
