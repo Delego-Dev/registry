@@ -4,7 +4,7 @@
   "private": true,
   "description": "Delego design-system registry for shadcn — theme + signature components for the access layer for the agent era.",
   "homepage": "https://github.com/Delego-Dev/registry",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "registry:build": "shadcn build",

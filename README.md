@@ -125,4 +125,4 @@ any discrepancy.
 
 ## License
 
-Apache-2.0, matching the Delego project.
+MIT — see [LICENSE](LICENSE). (The core Delego project is Apache-2.0; this UI registry is MIT to match the shadcn registry ecosystem.)
