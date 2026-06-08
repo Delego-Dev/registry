@@ -2,7 +2,7 @@
   "name": "@delego/registry",
   "version": "0.1.0",
   "private": true,
-  "description": "Delego design-system registry for shadcn — theme + signature components for the access layer for the agent era.",
+  "description": "Delego design-system registry for shadcn — theme + signature components for intent-bound action authorization for AI agents.",
   "homepage": "https://github.com/Delego-Dev/registry",
   "license": "MIT",
   "type": "module",

@@ -2,6 +2,6 @@
   "name": "@delego",
   "homepage": "https://github.com/Delego-Dev/registry",
   "url": "https://raw.githubusercontent.com/Delego-Dev/registry/main/public/r/{name}.json",
-  "description": "Design-system registry for Delego — the access layer for the agent era. Theme (OKLCH) plus signature components: decision pill, signed receipt, status badge, field.",
+  "description": "Design-system registry for Delego — intent-bound action authorization for AI agents. Theme (OKLCH) plus signature components: decision pill, signed receipt, status badge, field.",
   "logo": "<svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='1.5' y='1.5' width='37' height='37' rx='11' fill='#4B3DF5'/><rect x='1.5' y='1.5' width='37' height='37' rx='11' fill='url(#dg_sheen)' fill-opacity='0.55'/><rect x='2' y='2' width='36' height='36' rx='10.5' stroke='#fff' stroke-opacity='0.12'/><path d='M11 21.2L17.4 27.4' stroke='#fff' stroke-opacity='0.94' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/><path d='M17.4 27.4L29 12.4' stroke='#15E0A0' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/><defs><linearGradient id='dg_sheen' x1='2' y1='2' x2='38' y2='38' gradientUnits='userSpaceOnUse'><stop stop-color='#6A5FF6'/><stop offset='1' stop-color='#3A2DE0'/></linearGradient></defs></svg>"
 }
